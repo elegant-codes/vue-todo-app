@@ -1,16 +1,16 @@
 :root {
-  --primary: #ea40a4;
-  --business: #3a82ee;
+  --primary: #c96c25;
+  --business: #006d77;
   --personal: var(--primary);
-  --light: #eee;
-  --grey: #888;
-  --dark: #313154;
-  --danger: #ff5b57;
+  --light: #f4f1de;
+  --grey: #7d7a6a;
+  --dark: #413c32;
+  --danger: #d62828;
 
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
-  --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-  --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+  --business-glow: 0px 0px 4px rgba(0, 109, 119, 0.75);
+  --personal-glow: 0px 0px 4px rgba(201, 108, 37, 0.75);
 }
 
 * {
@@ -32,6 +32,7 @@ button {
 body {
   background: var(--light);
   color: var(--dark);
+  padding: 20px;
 }
 
 section {

@@ -24,6 +24,13 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().getTime(),
   });
+
+  inputContent.value = "";
+  inputCategory.value = "";
+};
+
+const removeTodo = (todo) => {
+  todos.value = todos.value.filter((t) => t !== todo);
 };
 
 watch(
@@ -40,6 +47,7 @@ watch(name, (newVal) => {
 
 onMounted(() => {
   name.value = localStorage.getItem("name") || "";
+  todos.value = JSON.parse(localStorage.getItem("todos")) || [];
 });
 </script>
 
@@ -69,7 +77,7 @@ onMounted(() => {
             <input
               type="radio"
               name="category"
-              value="work"
+              value="business"
               v-model="inputCategory"
             />
             <span class="bubble business"></span>
@@ -88,9 +96,31 @@ onMounted(() => {
           </label>
         </div>
 
-        <button type="submit">Add todo</button>
+        <input type="submit" value="Add todo" />
       </form>
     </section>
+
+    <div class="todo-list">
+      <h3>YOUR TODO LIST</h3>
+      <div class="list">
+        <div
+          v-for="todo in todos_asc"
+          :class="`todo-item ${todo.done && 'done'}`"
+        >
+          <label>
+            <input type="checkbox" v-model="todo.done" />
+            <span :class="`bubble ${todo.category}`"></span>
+          </label>
+          <div class="todo-content">
+            <input type="text" v-model="todo.content" />
+          </div>
+
+          <div class="actions">
+            <button class="delete" @click="removeTodo(todo)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
